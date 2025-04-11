@@ -5,6 +5,6 @@ install http-server using
 npm install -g http-server
 
 then run 
-http-server .
+npx http-server .
 
 and go to http://localhost:8080/
