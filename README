@@ -1,0 +1,10 @@
+running it locally for now. 
+needs http-server to run it since we are doing it locally
+
+install http-server using
+npm install -g http-server
+
+then run 
+http-server .
+
+and go to http://localhost:8080/
