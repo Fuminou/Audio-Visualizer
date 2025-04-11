@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    background: #000;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  input[type="file"] {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
