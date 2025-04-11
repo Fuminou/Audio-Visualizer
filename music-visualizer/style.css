@@ -1,23 +1,72 @@
 body {
-    margin: 0;
-    background: #000;
-    color: white;
-    font-family: sans-serif;
-    text-align: center;
-    overflow: hidden;
-  }
-  
-  input[type="file"] {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    font-size: 16px;
-    background-color: white;
-    color: black;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header, footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #111;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+footer {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+main {
+  flex-grow: 1;
+  position: relative;
+}
+
+#drop-zone {
+  border: 2px dashed #888;
+  border-radius: 10px;
+  color: #ccc;
+  text-align: center;
+  padding: 30px;
+  width: 300px;
+  margin: 20px auto;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: border-color 0.3s ease;
+}
+
+#drop-zone:hover {
+  border-color: #0ff;
+  color: #fff;
+}
+
+#drop-zone input {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  cursor: pointer;
+  left: 0;
+  top: 0;
+}
+
+#volume-control {
+  margin-top: 10px;
+  text-align: center;
+  color: #fff;
+}
+
+#volume {
+  width: 200px;
+  margin-top: 5px;
+}

@@ -3,15 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Music Visualizer</title>
+  <title>Superplay Visualizer</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
 </head>
 <body>
+  <header>
+    <h1>Audio Visualizer</h1>
+  </header>
+
   <main>
-    <input type="file" id="audioInput" accept="audio/*" />
+    <div id="drop-zone">
+      <p>Drag & drop an audio file here<br>or click to upload</p>
+      <input type="file" id="audioInput" accept="audio/*" />
+    </div>
+
+    <div id="volume-control">
+      <label for="volume">Volume</label>
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5" />
+    </div>
+      
   </main>
+
+  <footer>
+    <p>Made by Fuminou & Ndruwi</p>
+  </footer>
+
   <script src="sketch.js"></script>
 </body>
 </html>
