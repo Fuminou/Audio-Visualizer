@@ -1,0 +1,18 @@
+{
+  "name": "music-visualizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "http-server ./frontend -p 8080",
+    "backend": "cd backend && python app.py",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+    },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "http-server": "^14.1.1"
+  }
+}
