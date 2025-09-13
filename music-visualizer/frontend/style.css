@@ -10,20 +10,85 @@ body {
 }
 
 header, footer {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
   text-align: center;
-  padding: 1rem;
-  background-color: #111;
+  padding: 10px;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
 }
+
+header {
+  top: 0;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 10px 40px;
+}
+
+.left-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.center-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hide-ui {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#playPauseBtn,
+#uploadBtn {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border: 1px solid #fff;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#playPauseBtn:hover,
+#uploadBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
 
 h1 {
   margin: 0;
   font-size: 1.8rem;
 }
 
-footer {
-  font-size: 0.9rem;
-  opacity: 0.7;
-}
 
 main {
   flex-grow: 1;
@@ -60,15 +125,18 @@ main {
   top: 0;
 }
 
-#volume-control {
-  margin-top: 10px;
-  text-align: center;
-  color: #fff;
+#volume-control input[type="range"] {
+  appearance: none;
+  height: 4px;
+  background: #ccc;
+  border-radius: 4px;
+  outline: none;
+  width: 100px;
+  margin-left: 8px;
 }
 
 #volume {
-  width: 200px;
-  margin-top: 5px;
+  width: 100px;
 }
 
 #pattern-selector {
@@ -84,4 +152,194 @@ main {
   color: #0ff;
   border: 1px solid #0ff;
   border-radius: 4px;
+}
+
+#uploadBtn {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border: 1px solid #fff;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#uploadBtn i {
+  pointer-events: none; /* so clicking the icon still triggers the button */
+}
+
+#uploadBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+#progress-container {
+  flex: 1;
+  margin: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+#progress-bar {
+  width: 100%;
+  height: 14px;
+  background-color: rgba(0, 255, 255, 0.15); /* soft cyan glow base */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+#progress-fill {
+  height: 100%;
+  width: 0%;
+  background: rgba(0, 255, 255, 0.95);
+  border-radius: 20px 0 0 20px;
+  transition: width 0.2s linear;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.9), 0 0 25px rgba(0, 255, 255, 0.4);
+}
+
+
+/* modal styling */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.92); /* dark translucent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: linear-gradient(to bottom right, #222, #111);
+  color: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: popUp 0.25s ease-out;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #f0db4f;
+}
+
+.modal-content p {
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.modal-content input[type="file"] {
+  background-color: #f0db4f;
+  color: #000;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content input[type="file"]:hover {
+  background-color: #ffe66d;
+}
+
+.modal .close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.modal .close:hover {
+  transform: scale(1.2);
+}
+
+#presetBtn {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  border: 1px solid #fff;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-left: 10px;
+}
+
+#presetBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+#visualizer-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: opacity 0.5s ease;
+}
+
+#visualizer-cover img {
+  max-width: 80%;
+  max-height: 80%;
+  opacity: 0.8;
+}
+
+#visualizer-cover.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* ================== Animations ================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popUp {
+  from {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

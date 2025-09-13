@@ -7,12 +7,16 @@
     "frontend": "http-server ./frontend -p 8080",
     "backend": "cd backend && python app.py",
     "dev": "concurrently \"npm run frontend\" \"npm run backend\""
-    },
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^9.1.2",
     "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "butterchurn": "^2.6.7",
+    "butterchurn-presets": "^2.4.7"
   }
 }
